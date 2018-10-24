@@ -7,3 +7,4 @@ const setFromArray = (mySet = []) => Array.from(new Set(mySet));
 
 const changeParsers = (myArray = [], delim = ";") => myArray.toString().replace(/,/g, delim);
 
+const arrayIntersec = (array1 = [],array2 = []) => array1.filter(value => -1 !== array2.indexOf(value));
