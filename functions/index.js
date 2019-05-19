@@ -14,12 +14,11 @@ function removeFromArray(myArray, element) {
 }
 
 function getRandomColor() {
-    var letters = "0123456789ABCDEF";
-    var color = "#";
-    for (var i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-    }
+    const letters = "0123456789ABCDEF";
+    const color = [ '#',...Array(6).fill(0).map(() => letters[Math.floor(Math.random() * 16)])]
+    return color.join('')
 }
+
 
 // returns some blank arrays in the mix, needs refactor
 Array.prototype.toChunks = function(num) {
