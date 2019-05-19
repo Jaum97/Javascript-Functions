@@ -1,8 +1,6 @@
 /* Generic Javascript Array and CSV functions */
 /* 21/10/2018 */
 
-const changeParsers = (myArray = [], delim = ";") => myArray.toString().replace(/,/g, delim);
-
 const arrayIntersec = (array1 = [], array2 = []) => array1.filter(value => -1 !== array2.indexOf(value));
 
 function returnFieldfromMatrix(matrix, wantedField, conditionField, conditionValue) {
@@ -23,8 +21,9 @@ function getRandomColor() {
     }
 }
 
-Array.prototype.chunks = function(num) {
-	// check for breaking cases
+// returns some blank arrays in the mix, needs refactor
+Array.prototype.toChunks = function(num) {
+    // check for breaking cases
     if (num < 1) return arr
     //if (!Array.isArray(arr)) return arr ?if not used as prototype
     num = Math.floor(num)
@@ -40,7 +39,7 @@ Array.prototype.chunks = function(num) {
 // (10) [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 const arr = Array(10).fill(null).map((x, i) => i + 1 ) 
 
-const arr2 = arr.chunks(2)
+const arr2 = arr.toChunks(2)
 /*
 *(2) [Array(5), Array(5)]
 *	0: (5) [1, 2, 3, 4, 5]
