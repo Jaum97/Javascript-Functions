@@ -1,20 +1,9 @@
 /* Generic Javascript Array and CSV functions */
 /* 21/10/2018 */
 
-const csvToArray = (csvEntry, csvDelimiter = ",") => csvEntry.split(csvDelimiter);
-
-const setFromArray = (mySet = []) => Array.from(new Set(mySet));
-
 const changeParsers = (myArray = [], delim = ";") => myArray.toString().replace(/,/g, delim);
 
 const arrayIntersec = (array1 = [], array2 = []) => array1.filter(value => -1 !== array2.indexOf(value));
-
-function doubleCSVtoMatrix(csvInput, delim1, delim2) {
-    let array1 = csvToArray(csvInput, delim1);
-    let matrix = [];
-    for (let i = array1.length; i--; matrix[i] = csvToArray(array1[i], delim2)) { }
-    return matrix;
-}
 
 function returnFieldfromMatrix(matrix, wantedField, conditionField, conditionValue) {
     let matchedArray = [];
@@ -33,3 +22,27 @@ function getRandomColor() {
         color += letters[Math.floor(Math.random() * 16)];
     }
 }
+
+Array.prototype.chunks = function(num) {
+	// check for breaking cases
+    if (num < 1) return arr
+    //if (!Array.isArray(arr)) return arr ?if not used as prototype
+    num = Math.floor(num)
+     
+    const len = this.length
+    const tempArr = Array(num - 1).fill(null)
+    const parts = [0, ...tempArr.map((x, i) => Math.floor(len / (num / (i + 1))))]
+    const chunks = parts.map((x, i) => arr.slice(parts[i], parts[i + 1]))
+
+    return chunks
+}
+
+// (10) [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+const arr = Array(10).fill(null).map((x, i) => i + 1 ) 
+
+const arr2 = arr.chunks(2)
+/*
+*(2) [Array(5), Array(5)]
+*	0: (5) [1, 2, 3, 4, 5]
+*	1: (5) [6, 7, 8, 9, 10]
+*/
