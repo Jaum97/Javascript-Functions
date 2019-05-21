@@ -9,10 +9,6 @@ function returnFieldfromMatrix(matrix, wantedField, conditionField, conditionVal
     return matchedArray;
 }
 
-function removeFromArray(myArray, element) {
-    for (let i = myArray.length; i--;)(myArray[i] === element) ? myArray.splice(i, 1) : false
-}
-
 function getRandomColor() {
     const letters = "0123456789ABCDEF";
     const color = [ '#',...Array(6).fill(0).map(() => letters[Math.floor(Math.random() * 16)])]
@@ -23,14 +19,14 @@ function getRandomColor() {
 // returns some blank arrays in the mix, needs refactor
 Array.prototype.toChunks = function(num) {
     // check for breaking cases
-    if (num < 1) return arr
-    //if (!Array.isArray(arr)) return arr ?if not used as prototype
+    if (num < 1) return this
+    //if (!Array.isArray(this)) return this ?if not used as prototype
     num = Math.floor(num)
      
     const len = this.length
     const tempArr = Array(num - 1).fill(null)
     const parts = [0, ...tempArr.map((x, i) => Math.floor(len / (num / (i + 1))))]
-    const chunks = parts.map((x, i) => arr.slice(parts[i], parts[i + 1]))
+    const chunks = parts.map((x, i) => this.slice(parts[i], parts[i + 1]))
 
     return chunks
 }
