@@ -32,11 +32,19 @@ Array.prototype.toChunks = function(num) {
 }
 
 // (10) [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-const arr = Array(10).fill(null).map((x, i) => i + 1 ) 
+const arr1 = Array(10).fill(null).map((x, i) => i + 1 ) 
 
-const arr2 = arr.toChunks(2)
+const arr2 = arr1.toChunks(2)
 /*
 *(2) [Array(5), Array(5)]
 *	0: (5) [1, 2, 3, 4, 5]
 *	1: (5) [6, 7, 8, 9, 10]
 */
+
+Array.prototype.pluck = function(key) { return this.map( x => x[key]) }
+
+arr3 = ['potato', 'carrot', 'beet']
+
+arr4 = arr1.pluck('length')
+// (3) [6, 6, 4]
+
